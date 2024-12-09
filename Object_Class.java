@@ -26,7 +26,7 @@ class Ama{
         this.Age = Age;
     }
 }
-class Amma{
+class Amma{                         // every class is extend the Object class so is called as the base class Eg: class Amma extend Object{......}
     String name;
     int Age;
     Amma(String name, int Age){
