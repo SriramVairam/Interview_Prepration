@@ -1,0 +1,30 @@
+
+Spring Boot is a Java framework that makes it easier to create and run Java applications. 
+It simplifies the configuration and setup process, allowing developers to focus more on writing code for their applications.
+
+
+Why Use Spring Boot?
+
+Auto Configuration
+Standalone Applications
+Speeds up development.
+Eliminates the need for complex XML configurations.
+Provides an opinionated way to build Spring applications.
+
+Example of a Simple Spring Boot Application:
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class MySpringBootApp {
+    public static void main(String[] args) {
+        SpringApplication.run(MySpringBootApp.class, args);
+    }
+}
+
+What is a Servlet?
+
+A Servlet is a Java class used to handle HTTP requests and responses in a Java web application. It runs on a web server 
+(like Apache Tomcat) and helps generate dynamic web pages by processing client requests (usually from a browser). 
+Servlets are part of Java EE (Jakarta EE) and extend the HttpServlet class to interact with the web.

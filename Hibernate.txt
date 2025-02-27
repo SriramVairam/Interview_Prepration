@@ -1,0 +1,96 @@
+1, What is Hibernate?
+
+✅Hibernate is an ORM (Object-Relational Mapping) framework for Java applications. It simplifies database interactions by mapping 
+Java objects to database tables and vice versa. Hibernate is widely used for handling database operations in Java applications 
+and works with relational databases like MySQL, PostgreSQL, Oracle, etc.
+
+
+2, Why Use Hibernate?
+
+✅Eliminates Boilerplate Code:
+
+->Reduces the need for repetitive JDBC code (e.g., writing SQL queries, handling connections, and managing result sets).
+
+✅Object-Oriented Approach:
+
+->Developers can work with Java objects instead of writing SQL queries manually.
+
+✅Automatic Table Mapping:
+
+->Uses annotations (@Entity, @Table, etc.) or XML configurations to define how Java objects map to database tables.
+	✅1. Annotation-Based Mapping (Recommended)
+		Hibernate supports Java Persistence API (JPA) annotations to map entities directly in Java classes. 
+		This is the most commonly used and modern approach.
+		
+		import jakarta.persistence.*;
+
+		@Entity  // Marks this class as a Hibernate Entity (table)
+		@Table(name = "students")  // Custom table name
+		public class Student {
+    
+			@Id  // Marks as primary key
+			@GeneratedValue(strategy = GenerationType.IDENTITY)  // Auto-increment
+			private Long id;
+    
+			@Column(name = "student_name", nullable = false)  // Custom column name
+			private String name;
+
+			@Column(unique = true) // Enforces unique constraint
+			private String email;
+
+			// Getters and Setters
+		}	
+
+	✅2. XML-Based Mapping (Old Approach)
+		Before annotations, Hibernate used XML configuration files (Hibernate Mapping File: *.hbm.xml) to define mappings.
+		
+		<hibernate-mapping>
+			<class name="com.example.Student" table="students">
+				<id name="id" column="id">
+					<generator class="identity"/> <!-- Auto-increment -->
+				</id>
+				<property name="name" column="student_name" not-null="true"/>
+				<property name="email" column="email" unique="true"/>
+			</class>
+		</hibernate-mapping>
+
+
+
+3, JDBC vs. Hibernate – Why Hibernate is Preferred?
+
+✅JDBC (Java Database Connectivity) is a Java API used to connect to a database and execute queries. However, when using JDBC, 
+developers need to write a lot of boilerplate code. For example, they must:
+✅
+Load the JDBC driver
+Establish a database connection
+Write SQL queries
+Convert data between Java objects and database records
+This makes developing large-scale industrial applications difficult because managing these repetitive tasks manually can be 
+error-prone and time-consuming.
+✅
+Solution: Hibernate
+Hibernate is an ORM (Object-Relational Mapping) framework that simplifies database interactions. It automatically:
+
+✅ Converts Java entity classes into database tables
+✅ Maps class fields to table columns
+✅ Eliminates the need to manually handle connections, queries, and data conversion
+✅ Removes boilerplate code, making development easier and more efficient
+
+Thus, Hibernate provides a more flexible and user-friendly approach to database management in Java applications. 
+
+4, Important Interfaces used in hibernate?
+
+	✅SessionFactory :
+	-> It is a factory for Session objects.
+	-> It is heavyweight and thread-safe, so it should be created once per application.
+	-> Reads configuration files (hibernate.cfg.xml) and establishes database connections.
+	
+	✅Session :
+	-> Session is the main interface between Hibernate and the database.
+	-> It opens a connection to interact with the database and perform CRUD operations.
+	-> It is not thread-safe, so each database operation should use a new session.
+
+	✅Transaction :
+	-> Transaction ensures ACID (Atomicity, Consistency, Isolation, Durability) properties.
+	-> Without a transaction, Hibernate won’t commit changes to the database.
+	-> If an error occurs, rollback prevents data inconsistency.
